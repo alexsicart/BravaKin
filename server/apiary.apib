@@ -1,0 +1,422 @@
+FORMAT: 1A
+HOST: TBD
+
+# Bravakin
+
+Some Bravakin project.
+
+## Authorize [/authorize]
+
+### Authenticate or verify a user [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+
++ Response 200 (application/json)
+
+        {
+            "data": {
+                "id": "42",
+                "username": "zbeeble",
+                "full_name": "Zaphod Beeblebrox",
+                "profile_picture": "http://distillery.s3.amazonaws.com/profiles/profile_42_75sq_1295469061.jpg",
+                "access_token": "ACCESS_TOKEN",
+                "like_tags": [],
+                "be_like": []
+            }
+        }
+
+
+## Unauthorize [/unauthorize]
+
+### Remove a user's access_token from the database [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+            
++ Response 200 (application/json)
+
+
+## User details [/me]
+
+### Get current user details [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+        
++ Response 200 (application/json)
+
+        {
+            "data": {
+                "id": "42",
+                "username": "zbeeble",
+                "full_name": "Zaphod Beeblebrox",
+                "be_like": [ 
+                    "Yahweh", 
+                    "The Messiah",
+                    "Godzilla"
+                ],
+                "like_tags": [
+                    "landscape",
+                    "adventure"
+                ]
+            }
+        }
+
+### Update current user "be like" and "tags" preferences [PUT]
+Send an "add" object to add to the respective list ("be_like" or "like_tags").
+Send a "remove" object to remove from a list.
+Send an "update" object to rewrite the list.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+
+    + Body
+    
+            {
+                "save": "JustAstring",
+                "update": {
+                    "be_like": [ 
+                        "Yahweh", 
+                        "The Messiah"
+                    ]
+                },
+                "add": {
+                    "like_tags": [
+                        "beachvolley",
+                        "power"
+                    ]
+                }
+            }
+        
+
++ Response 200 (application/json)
+
+        {
+            "data": {
+                "id": "42",
+                "username": "zbeeble",
+                "full_name": "Zaphod Beeblebrox",
+                "be_like": [ 
+                    "Yahweh", 
+                    "The Messiah"
+                ],
+                "like_tags": [
+                    "landscape",
+                    "adventure",
+                    "beachvolley",
+                    "power"
+                ]
+            }
+        }
+
+## User activity [/me/activity]
+
+Not implimented
+
+### Get current user's activity [GET]
+
+Not implimented
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+        
++ Response 200 (application/json)
+
+        {
+            "data": {
+
+            }
+        }
+
+
+## Get media by tag [/tags/{tag_name}]
+
+Status: Implementation pending
+Get 20 pieces of media to like by hashtag
+
++ Parameters
+
+    + tag_name: "moto" (required) - Tag name to search
+
+### Get media [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"},
+                    { "imageUrl": "https://unsplash.it/1536/1024/?random", "postUrl": "%2Fp%2FBX2cAjVlBN5%2F"}
+                ]
+            }
+            
+
+## Like media [/media/{url_path}/like]
+
+Status: Implementation pending
+Like the media at url path (url encoded)
+
++ Parameters
+
+    + url_path: %2Fp%2FBX2cAjVlBN5%2F (required) - url encoded path to the media to like
+    
+### Like a piece of media [PUT]
+
++ Requset (application/json)
+
+    + Headers
+    
+            Authorization: Bearer ACCESS_TOKEN
+            
++ Response 200 (application/json)
+
+
+## Specific media [/media/{id}]
+
+Not yet implimented
+
++ Parameters
+
+    + id: 34632 (required) - Id of the specific media
+
+### Get media details [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+        
++ Response 200 (application/json)
+
+        {
+            "data": {
+
+            }
+        }
+        
+## Like media [/media/{id}/like]
+
+Not yet implimented
+
++ Parameters
+
+    + id: 34632 (required) - Id of the media to like
+    
+### Like a piece of media [PUT]
+
++ Requset (application/json)
+
+    + Headers
+    
+            Authorization: Bearer ACCESS_TOKEN
+            
++ Response 200 (application/json)
+
+
+## Performance [/performance/{id}{?timeframe}]
+
+Get the number of likes and comments on a media for a given timeframe. The return object contains the timeframe as the key with the properties "likes" and "comments", each containing an array. The array[0] will be the most recent sub-timeframe (meaning hour for day, day for week, week for month). The next index will be the previous sub-timeframe and so on, through the whole timeframe.
+
++ Parameters
+
+    + id: 34632 (required) - Id of the specific media
+    + timeframe: day (optional, valid parameters ["day", "week", or "month"]) - The timeframe of stats to get
+    
+### Get performance statistics for a piece of media [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+        
++ Response 200 (application/json)
+
+        {
+            "day": {
+                "likes": [
+                    "2",
+                    "1",
+                    "3",
+                    "6",
+                    "4",
+                    "2",
+                    "42",
+                    "21",
+                    "1",
+                    "0",
+                    "1"
+                ],
+                "comments": [
+                    "1",
+                    "1",
+                    "0",
+                    "2",
+                    "1",
+                    "2",
+                    "4",
+                    "2",
+                    "0",
+                    "0",
+                    "0"
+                ]
+            }
+        }
+        
+
+## Performance [/performance{?timeframe}]
+
+Get the current user's total number of follows, likes, and comments for a given timeframe. The return object contains the timeframe as the key with the properties "follows", "likes", and "comments", each containing an array. The array[0] will be the most recent sub-timeframe (meaning hour for day, day for week, week for month). The next index will be the previous sub-timeframe and so on, through the whole timeframe.
+
+
++ Parameters
+
+    + timeframe: day (optional, [day,week,month]) - The timeframe of stats to get
+    
+### Get general performance statistics [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+        
++ Response 200 (application/json)
+
+        {
+            "week": {
+                "likes": [
+                    "32",
+                    "532",
+                    "32",
+                    "54",
+                    "34",
+                    "12",
+                    "91"
+                ],
+                "comments": [
+                    "21",
+                    "52",
+                    "3",
+                    "41",
+                    "3",
+                    "2",
+                    "9"
+                ],
+                "follows": [
+                    "3",
+                    "32",
+                    "3",
+                    "4",
+                    "3",
+                    "1",
+                    "1"
+                ]
+            }
+            
+        }
+
+
+## Global influence [/influence]
+
+Not yet implimented
+
+### Get user and associated points for mapping influence [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+        
++ Response 200 (application/json)
+
+        {
+            "data": {
+                "influenced": [
+                    { 
+                        "id": "1234",
+                        "username": "somename",
+                        "location": {
+                            "latitude": "37.778720183610183",
+                            "longitude": "-122.3962783813477",
+                        }
+                    }
+                ]
+            }
+        }
+        
+## Media influence [/influence/{id}]
+
+Not yet implimented
+
++ Parameters
+
+    + id: 34632 (required) - Id of the specific media
+    
+### Get user and associated points for mapping influence for a piece of media [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: Bearer ACCESS_TOKEN
+        
++ Response 200 (application/json)
+
+        {
+            "data": {
+                "influenced": [
+                    { 
+                        "id": "1234",
+                        "username": "somename",
+                        "location": {
+                            "latitude": "37.778720183610183",
+                            "longitude": "-122.3962783813477",
+                        }
+                    }
+                ]            
+            }
+        }
