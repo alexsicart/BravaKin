@@ -1,8 +1,7 @@
 # BravaKin
 
 ## Description
-Grow Your Instagram Followers Responsibly
-Add topics
+Grow Your Instagram Followers Responsibly.
 
 ![](Screenshots/2.png)
 ![](Screenshots/1.png)
